@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div class="row1" style="display: flex;justify-content: space-between;padding: 30px;">
+            <div>
+                <img src="assets/logo2.png" width="100vw" class="logo">
+                <a class="overlay-textlogo">Bag&Fly</a>
+            </div>
+            <div style="padding: 30px;">
+                <a href="#" class="nav_item">Home</a>
+                <a href="#" class="nav_item">Search</a>
+                <a href="#" class="nav_item">Blog</a>
+                <a href="#" class="nav_item">About Us</a>
+                <a href="#" class="signup_Button">Sign up</a>
+                <a href="#" class="login_Button">Log in</a>
+            </div>
+        </div>
+        <div style="height: 2px;width: 95%;background-color: rgb(208, 208, 208);position: relative;top: -30px;left :2.1%"></div>
+        <div style="display: flex;justify-content: space-between;padding-left: 50px;padding-top: 30px;padding-right: 100px;">
+            <div style="display: flex;flex-direction: column;background-color: rgb(46, 46, 46);height: 1000px;width: 450px;border-radius: 30px;">
+                <div style="color: #fff;font-size: 26px;padding: 30px;">Filter</div>
+                <div style="height: 2px;width: 90%;background-color: #fff;margin-left:5% ;font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;"></div>
+                <div style="color: #fff;font-size: 26px;padding: 30px;">Price</div>
+                <mat-slider [max]="maxValue" [min]="minValue" class="custom-theme" [discrete]=true [step]=10 min="10" max="500" style="width: 80%;margin-left: 10%;"color="accent" >
+                    <input  [(ngModel)]="startValue" matSliderStartThumb>
+                    <input  [(ngModel)]="endValue" matSliderEndThumb>
+                </mat-slider>
+                <div style="color: #fff;font-size: 26px;padding: 30px;">Promotion</div>
+                <mat-checkbox  style="margin-left:20px ;"
+                     class="example-margin"
+                     
+                     [(ngModel)]="promotionChecked">
+                     <div style="color: #fff;font-size: 20px;">Avec Promotion</div>
+                </mat-checkbox>
+                <div style="color: #fff;font-size: 26px;padding: 30px;">Ville</div>
+                <section class="example-section" style="margin: 30px;">
+                    <span class="example-list-section">
+                      <mat-checkbox class="example-margin" 
+                                    [checked]="allComplete"
+                                    [color]="task.color"
+                                    [indeterminate]="someComplete()"
+                                    (change)="setAll($event.checked)">
+                                    <div style="color: white; font-size: 20px;">{{task.name}}</div>
+                      </mat-checkbox>
+                    </span>
+                    <span class="example-list-section">
+                        
+                          <table>
+                            <ng-container *ngFor="let sub of task.subtasks; let j = index">
+                              <tr *ngIf="j % 2 === 0" class="checkbox-row">
+                                <!-- Checkbox for the first column -->
+                                <td>
+                                  <mat-checkbox class="custom-checkbox" [(ngModel)]="task.subtasks[j].completed"
+                                                [color]="task.color"
+                                                (ngModelChange)="updateAllComplete()">
+                                    <div style="color: white; font-size: 20px;">{{ task.subtasks[j].name }}</div>
+                                  </mat-checkbox>
+                                </td>
+                                <div style="padding-right: 100px;"></div>
+                                <!-- Check if the next subtask exists before displaying its checkbox -->
+                                <td *ngIf="task.subtasks[j + 1]">
+                                  <mat-checkbox [(ngModel)]="task.subtasks[j + 1].completed"
+                                                [color]="task.color"
+                                                (ngModelChange)="updateAllComplete()">
+                                                <div style="color: white; font-size: 20px;">{{ task.subtasks[j + 1].name }}</div>
+                                  </mat-checkbox>
+                                </td>
+                              </tr>
+                            </ng-container>
+                          </table>
+                      </span>
+                  </section>
+                  
+
+  
+            </div>
+            <div style="padding: 30px;"></div>
+
+            <div class="col1" style="display: flex; flex-direction: column;">
+                <ng-container *ngFor="let hotel of availableHotelsCopy; let i = index;">
+                  <div *ngIf="i % 2 === 0" style="display: flex; flex-direction: row;">
+                    <div style="display: flex; flex-direction: column; padding-bottom: 40px;">
+                      <!-- Display details for the first hotel in the pair -->
+                      <img [src]="'assets/' + gethotelphoto(hotel.id)" width="400px" class="besthotelphoto" style="border-radius: 20px;">
+                      <div style="font-size: 27px; padding-left: 10px; padding-top: 20px; padding-bottom: 10px;">{{ hotel.nomHotel }}</div>
+                      <div style="font-size: 25px; padding-left: 10px; padding-bottom: 10px;">{{ hotel.ville + ', ' + hotel.adress }}</div>
+                      <div style="font-size: 17px; padding-left: 10px;">{{ '⭐️'.repeat(hotel.nbEtoile) }} ({{ hotel.nbVisiteur }} Visitors)</div>
+                      <button (click)="goToReservPage(hotel)" class="bookbutton"> Book</button>
+                    </div>
+                    <div *ngIf="availableHotelsCopy[i + 1]" style="display: flex; flex-direction: column; padding-bottom: 40px; padding-left: 50px;">
+                      <!-- Display details for the second hotel in the pair -->
+                      <img [src]="'assets/' + gethotelphoto(availableHotelsCopy[i + 1].id)" width="400px" class="besthotelphoto" style="border-radius: 20px;">
+                      <div style="font-size: 27px; padding-left: 10px; padding-top: 20px; padding-bottom: 10px;">{{ availableHotelsCopy[i + 1].nomHotel }}</div>
+                      <div style="font-size: 25px; padding-left: 10px; padding-bottom: 10px;">{{ availableHotelsCopy[i + 1].ville + ', ' + availableHotelsCopy[i + 1].adress }}</div>
+                      <div style="font-size: 17px; padding-left: 10px;">{{ '⭐️'.repeat(availableHotelsCopy[i + 1].nbEtoile) }} ({{ availableHotelsCopy[i + 1].nbVisiteur }} Visitors)</div>
+                      <button (click)="goToReservPage(availableHotelsCopy[i + 1])" class="bookbutton"> Book</button>
+                    </div>
+                  </div>
+                </ng-container>
+                <mat-paginator #paginator
+                (page)="handlePageEvent($event)"
+                [length]="availableHotels.length"
+                [pageSize]="pageSize" 
+                aria-label="Select page">
+              </mat-paginator>
+             </div>
+
+        </div>
+        <div class="row8">
+            <div class="row8col1">
+                <div class="headertextrow8">Page</div>
+                <div class="choisetextrow8">Home</div>
+                <div class="choisetextrow8">Search</div>
+                <div class="choisetextrow8">Blog</div>
+                <div class="choisetextrow8">About us</div>
+            </div>
+            <div class="row8col2">
+                <div class="headertextrow8">Features</div>
+                <div class="choisetextrow8">Find Hotel</div>
+                <div class="choisetextrow8">Book Hotel</div>
+                <div class="choisetextrow8">Reviews</div>
+            </div>
+            <div class="row8col3">
+                <div class="headertextrow8">Cookies</div>
+                <div class="choisetextrow8">Terms</div>
+                <div class="choisetextrow8">Privacy</div>
+                <div class="choisetextrow8">Laws</div>
+            </div>
+            <div class="row8col4">
+                <div class="subscription-section">
+                    <div class="left-content">
+                        <h2>Don't Wanna Miss Our Offers?</h2>
+                        <div class="subscription-form">
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                placeholder="Your email@gmail.com"
+                            >
+                            <button type="submit">Subscribe</button>
+                        </div>
+                    </div>
+                    <div class="right-content">
+                        <p>You guys better subscribe to our daily newsletter!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

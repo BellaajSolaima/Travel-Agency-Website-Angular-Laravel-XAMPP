@@ -1,0 +1,22 @@
+.cus-snackbar{
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .mat-icon{
+        font-size: 2rem;
+        height: 2rem;
+        width: 2rem;
+        margin-right: .5rem;
+    }
+    .spacer{
+        padding-left: 80px;
+    }
+}
+.custom-button {
+    color: white !important; 
+  }
+  html, body, .cus-snackbar-container {
+    height: 100%;
+    margin: 0;
+}

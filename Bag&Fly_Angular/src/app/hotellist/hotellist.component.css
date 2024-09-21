@@ -1,0 +1,203 @@
+body{
+    overflow-x: hidden;
+}
+.logo {
+    margin-right: 30px;
+}
+.overlay-textlogo {
+    position: relative;
+    top: -70px;
+    color: rgb(81, 81, 81);
+    font-size: 2.6vw;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.nav_item {
+    font-size: 1.4em;
+    color: black;
+    text-decoration: none;
+    margin-left: 40px;
+    position: relative;
+}
+.nav_item::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 100%;
+    height: 3px;
+    background: black;
+    border-radius: 5px;
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+.nav_item:hover::after {
+    transform: scaleX(1);
+}
+
+.login_Button {
+    margin-left: 15px;
+    color: #fff;
+    background-color: black;
+    text-decoration: none;
+    border: 2px solid #fff;
+    font-weight: 500;
+    font-size: 15px;
+    padding: 15px 40px;
+    border-radius: 40px;
+    transition: all 0.3s ease;
+}
+.login_Button:hover {
+    color: black !important;
+    background-color: #ffF;
+    border: 2px solid black;
+}
+.signup_Button {
+    margin-left: 15px;
+    color: black;
+    font-size: 15px;
+    background-color: #fff;
+    text-decoration: none;
+    border: 2px solid black;
+    font-weight: 500;
+    padding: 13px 37px;
+    border-radius: 40px;
+    transition: all 0.3s ease;
+}
+.signup_Button:hover {
+    color: #fff !important;
+    background-color: rgb(195, 195, 195);
+}
+.bookbutton {
+    
+    width: 100%;
+    margin-top: 10px;
+    color: #fff;
+    background-color: black;
+    text-decoration: none;
+    border: 2px solid #fff;
+    font-weight: 500;
+    font-size: 15px;
+    padding: 15px 40px;
+    border-radius: 40px;
+    transition: all 0.3s ease;
+}
+.bookbutton:hover {
+    color: black !important;
+    background-color: #ffF;
+    border: 2px solid black;
+}
+
+.row8{display: flex;
+    overflow-y: hidden;
+    position: relative;
+    bottom: 0;
+    left: -20px;
+    background-color: #333;
+    height:230px;
+    width: 100%;
+    padding-top: 50px;
+    padding-left: 100px;
+    margin-top: 50px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.row8col1{
+    padding-right: 150px;
+    display: flex;
+    flex-direction: column;
+}
+.row8col2{
+    padding-right: 150px;
+    display: flex;
+    flex-direction: column;
+}
+.row8col3{
+    padding-right: 150px;
+    display: flex;
+    flex-direction: column;
+}
+.row8col4{
+    margin-right: 40px;
+}
+.headertextrow8{
+    padding-bottom: 20px;
+    color: #fff;
+    font-size: 25px;
+}
+.choisetextrow8{
+    padding-bottom: 15px;
+    color:rgb(173, 173, 173);
+    font-size: 20px;
+}
+.subscription-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    max-width: 600px;
+    
+    margin-right: 100px;
+  }
+  
+  .left-content h2 {
+    margin: 0 0 20px;
+    font-size: 24px;
+  }
+  
+  .subscription-form {
+    display: flex;
+  }
+  
+  .subscription-form input {
+    padding: 10px;
+    margin-right: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    flex: 1;
+  }
+  
+  .subscription-form button {
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .subscription-form button:hover {
+    background-color: #555;
+  }
+  
+  .right-content p {
+    width: 300px;
+    margin: 0;
+    color: #666;
+    font-size: 14px;
+  }
+  
+  @media (max-width: 768px) {
+    .subscription-section {
+      flex-direction: column;
+    }
+  
+    .right-content p {
+      margin-top: 20px;
+    }
+  }
+  .left-content{
+    margin-right: 30px;
+  }
+  label.checkbox-container {
+    display: inline-block;
+    position: relative;
+  }
+  
+  label.checkbox-container {
+    display: inline-block;
+    position: relative;
+  }
+  

@@ -1,0 +1,133 @@
+<div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Photo CRUD</h3>
+            <div class="card-tools">
+              <button type="button" class="btn btn-primary" (click)="toggleAddPhotoModal()">Add Photo</button>
+            </div>
+          </div>
+          <div class="card-body">
+            <table id="photoTable" class="table table-bordered table-hover">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Photo 1</th>
+                  <th>Photo 2</th>
+                  <th>Photo 3</th>
+                  <th>Photo 4</th>
+                  <th>Photo 5</th>
+                  <th>Hotel ID</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let photo of photos">
+                  <td>{{photo.id}}</td>
+                  <td>{{photo.photo1}}</td>
+                  <td>{{photo.photo2}}</td>
+                  <td>{{photo.photo3}}</td>
+                  <td>{{photo.photo4}}</td>
+                  <td>{{photo.photo5}}</td>
+                  <td>{{photo.hotel_id}}</td>
+                  <td>
+                    <button type="button" class="btn btn-warning btn-sm" (click)="toggleEditPhotoModal(photo)">Edit</button>
+                    <button type="button" class="btn btn-danger btn-sm" (click)="deletePhoto(photo.id)">Delete</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div *ngIf="addVerif==1" class="popup">
+    <div class="popup-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Add Photo</h5>
+        <button type="button" class="close" (click)="addVerif=0">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="photo1">Photo 1</label>
+            <input type="text" class="form-control" id="photo1" placeholder="Enter photo 1 URL" name="photo1" [(ngModel)]="newPhoto!.photo1">
+          </div>
+          <div class="form-group">
+            <label for="photo2">Photo 2</label>
+            <input type="text" class="form-control" id="photo2" placeholder="Enter photo 2 URL" name="photo2" [(ngModel)]="newPhoto!.photo2">
+          </div>
+          <div class="form-group">
+            <label for="photo3">Photo 3</label>
+            <input type="text" class="form-control" id="photo3" placeholder="Enter photo 3 URL" name="photo3" [(ngModel)]="newPhoto!.photo3">
+          </div>
+          <div class="form-group">
+            <label for="photo4">Photo 4</label>
+            <input type="text" class="form-control" id="photo4" placeholder="Enter photo 4 URL" name="photo4" [(ngModel)]="newPhoto!.photo4">
+          </div>
+          <div class="form-group">
+            <label for="photo5">Photo 5</label>
+            <input type="text" class="form-control" id="photo5" placeholder="Enter photo 5 URL" name="photo5" [(ngModel)]="newPhoto!.photo5">
+          </div>
+          <div class="form-group">
+            <label for="hotelId">Hotel ID</label>
+            <input type="number" class="form-control" id="hotelId" placeholder="Enter hotel ID" name="hotelId" [(ngModel)]="newPhoto!.hotel_id">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="addVerif=0">Close</button>
+        <button type="button" class="btn btn-primary" (click)="addPhoto()">Save changes</button>
+      </div>
+    </div>
+  </div>
+  
+  <div *ngIf="addVerif==2" class="popup">
+    <div class="popup-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Edit Photo</h5>
+        <button type="button" class="close" (click)="addVerif=0">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="formEdit">
+          <input type="hidden" formControlName="id">
+          <div class="form-group">
+            <label for="editPhoto1">Photo 1</label>
+            <input type="text" class="form-control" id="editPhoto1" placeholder="Enter photo 1 URL" formControlName="editPhoto1">
+          </div>
+          <div class="form-group">
+            <label for="editPhoto2">Photo 2</label>
+            <input type="text" class="form-control" id="editPhoto2" placeholder="Enter photo 2 URL" formControlName="editPhoto2">
+          </div>
+          <div class="form-group">
+            <label for="editPhoto3">Photo 3</label>
+            <input type="text" class="form-control" id="editPhoto3" placeholder="Enter photo 3 URL" formControlName="editPhoto3">
+          </div>
+          <div class="form-group">
+            <label for="editPhoto4">Photo 4</label>
+            <input type="text" class="form-control" id="editPhoto4" placeholder="Enter photo 4 URL" formControlName="editPhoto4">
+          </div>
+          <div class="form-group">
+            <label for="editPhoto5">Photo 5</label>
+            <input type="text" class="form-control" id="editPhoto5" placeholder="Enter photo 5 URL" formControlName="editPhoto5">
+          </div>
+          <div class="form-group">
+            <label for="editHotelId">Hotel ID</label>
+            <input type="number" class="form-control" id="editHotelId" placeholder="Enter hotel ID" formControlName="editHotelId">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="addVerif=0">Close</button>
+        <button type="button" class="btn btn-primary" (click)="editPhoto()">Save changes</button>
+      </div>
+    </div>
+  </div>
+  

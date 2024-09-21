@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>JoyEvent</title>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    </head>
+    <body>
+        <div class="container">
+            <div>
+                <div class="container-photo">
+                    <div class="row1">
+                        <div>
+                            <img src="assets/logo2.png" width="100vw" class="logo">
+                            <a class="overlay-textlogo">Bag&Fly</a>
+                        </div>
+                        <div class="nav_position">
+                            <a href="#" class="nav_item">Home</a>
+                            <a href="#" class="nav_item">Hotels</a>
+                            <a href="#" class="nav_item">Omra</a>
+                            <a href="#" class="nav_item">About us</a>
+                        </div>
+                        <div style="position: relative;bottom: 10px;">
+                            <a *ngIf="!isLoggedIn()" href="/login" class="signup_Button">Sign up</a>
+                            <a *ngIf="!isLoggedIn()" href="/login" class="login_Button">Log in</a>
+                            <a *ngIf="isLoggedIn()" href="/login" (click)="logout()" class="signup_Button">Log out</a>
+                        </div>
+                    </div>
+                    <div class="row2">
+                        <div>
+                            <div class="bigtext1">Stay Quietly,</div>
+                            <div class="bigtext2">With no Worries</div>
+                        </div>
+                        <div class="counterContainer">
+                            <div style="margin-bottom: 70px;">
+                                <div class="counterMediumText">12k+</div>
+                                <br>
+                                <div class="counterSmallText">Satisfied Visitors</div>
+                            </div>
+                            <div style="margin-bottom: 70px;">
+                                <div class="counterMediumText">4.5k+</div>
+                                <br>
+                                <div class="counterSmallText">Amazing TourGuide</div>
+                            </div >
+                            <div style="margin-bottom: 70px;">
+                                <div class="counterMediumText">2k+</div>
+                                <br>
+                                <div class="counterSmallText">Special Travel Trip</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row3">
+    <div class="search-container">
+        <div>
+            <div class="image-and-text">
+                <img style="padding: 30px;" width="30px" src="assets/location-outline.png">
+                <div>Location</div>
+            </div>
+                <input [(ngModel)]="destination" class="reservation_input" placeholder="Enter your destination">
+            <div  style="color: gray; ">{{hotel_count}}</div>
+        </div>
+        <div>
+            <div class="image-and-text">
+                <img style="padding: 30px;" width="30px" src="assets/person-outline.png">
+                <div>Person</div>
+            </div>
+            <div class="custom-dropdown">
+                <select [(ngModel)]="selectedPerson">
+                    <option value="" disabled selected>Person</option>
+                    <option value="1">1 Adult</option>
+                    <option value="2">2 Adult</option>
+                    <option value="3">3 Adult</option>
+                    <option value="4">4 Adult</option>
+                    <option value="5+">5+ Adult</option>
+                </select>
+            </div>
+        </div>
+        <div>
+            <div class="image-and-text">
+                <img style="padding: 30px;" width="30px" src="assets/calendar-outline.png">
+                <div>Check-in</div>
+            </div>
+            <input class="reservation_date_input" type="date" [(ngModel)]="checkInDate">
+        </div>
+        <div>
+            <div class="image-and-text">
+                <img style="padding: 30px;" width="30px" src="assets/calendar-outline.png">
+                <div>Check-out</div>
+            </div>
+            <input class="reservation_date_input" type="date" [(ngModel)]="checkOutDate">
+        </div>
+        <div>
+            <button class="reservation_button" (click)="searchHotel()">Search</button>
+        </div>
+    </div>
+</div>
+
+                </div>
+                <div class="row4">
+                    <div class="text11">Our Most Amazing</div>
+                    <div class="text12">Visited Hotel on 2023 !</div>
+                    <div class="undertext1">
+                        take a look our best choise for the hotels of the year, we pick the hotels
+                    </div>
+                    <div class="undertext1">from our amazing visitors</div>
+                </div>
+                <div class="row5">
+                    <div class="row5col1">
+                        <div class="img1">
+                            <div class="text211">
+                                <span>Palm jumeirah,Dubai &nbsp;</span>
+                                <span>5 Stars&nbsp;</span>
+                                <span>(218)visitors</span>
+                            </div>
+                            <div class="text212">Oasis sands resort homestay</div>
+                        </div>
+                    </div>
+                    <div class="row5col2">
+                        <div class="img2" style="margin-bottom: 40px;">
+                            <div class="text221">
+                                <span>Palm jumeirah,Dubai &nbsp;</span>
+                                <span>5 Stars&nbsp;</span>
+                                <span>(218)visitors</span>
+                            </div>
+                            <div class="text222">Oasis sands resort homestay</div>
+                        </div>
+                        <div class="img3">
+                            <div class="text221">
+                                <span>Palm jumeirah,Dubai &nbsp;</span>
+                                <span>5 Stars&nbsp;</span>
+                                <span>(218)visitors</span>
+                            </div>
+                            <div class="text222">Oasis sands resort homestay</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row6">
+                    <div class="row6col1">
+                        <div style="margin-bottom: 30px;">Explore Our Best List</div>
+                        <div>5-Stars Hotel!</div>
+                    </div>
+                    <div class="row6col2">
+                        <div>
+                            We understand that every traveler has different
+                            <br>
+                            perferences. That's why our platform's good
+                        </div>
+                        <div class="search-container">
+                            <input class="hotelsearchbutton" type="text" placeholder="Find Hotel">
+                            <i class="fa fa-search"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="row7">
+                    <div style="display: flex;flex-direction: column;">
+                        <img class="besthotelphoto" src="assets/best1.jpg">
+                        <div style="font-size: 27px;padding-left: 10px;padding-top: 20px;padding-bottom: 10px;">Golden Horizon Hotel</div>
+                        <div style="font-size: 25px;padding-left: 10px;padding-bottom: 10px;">new Zealand,Australia</div>
+                        <div style="font-size: 17px;padding-left: 10px;">⭐️⭐️⭐️⭐️⭐️(718 Visitors)</div>
+                    </div>
+                    <div style="display: flex;flex-direction: column;">
+                        <img class="besthotelphoto" src="assets/best1.jpg">
+                        <div style="font-size: 27px;padding-left: 10px;padding-top: 20px;padding-bottom: 10px;">Golden Horizon Hotel</div>
+                        <div style="font-size: 25px;padding-left: 10px;padding-bottom: 10px;">new Zealand,Australia</div>
+                        <div style="font-size: 17px;padding-left: 10px;">⭐️⭐️⭐️⭐️⭐️(718 Visitors)</div>
+                    </div>
+                    <div style="display: flex;flex-direction: column;">
+                        <img class="besthotelphoto" src="assets/best1.jpg">
+                        <div style="font-size: 27px;padding-left: 10px;padding-top: 20px;padding-bottom: 10px;">Golden Horizon Hotel</div>
+                        <div style="font-size: 25px;padding-left: 10px;padding-bottom: 10px;">new Zealand,Australia</div>
+                        <div style="font-size: 17px;padding-left: 10px;">⭐️⭐️⭐️⭐️⭐️(718 Visitors)</div>
+                    </div>
+                </div>
+                <div class="row7">
+                    <div style="display: flex;flex-direction: column;">
+                        <img class="besthotelphoto" src="assets/best1.jpg">
+                        <div style="font-size: 27px;padding-left: 10px;padding-top: 20px;padding-bottom: 10px;">Golden Horizon Hotel</div>
+                        <div style="font-size: 25px;padding-left: 10px;padding-bottom: 10px;">new Zealand,Australia</div>
+                        <div style="font-size: 17px;padding-left: 10px;">⭐️⭐️⭐️⭐️⭐️(718 Visitors)</div>
+                    </div>
+                    <div style="display: flex;flex-direction: column;">
+                        <img class="besthotelphoto" src="assets/best1.jpg">
+                        <div style="font-size: 27px;padding-left: 10px;padding-top: 20px;padding-bottom: 10px;">Golden Horizon Hotel</div>
+                        <div style="font-size: 25px;padding-left: 10px;padding-bottom: 10px;">new Zealand,Australia</div>
+                        <div style="font-size: 17px;padding-left: 10px;">⭐️⭐️⭐️⭐️⭐️(718 Visitors)</div>
+                    </div>
+                    <div style="display: flex;flex-direction: column;">
+                        <img class="besthotelphoto" src="assets/best1.jpg">
+                        <div style="font-size: 27px;padding-left: 10px;padding-top: 20px;padding-bottom: 10px;">Golden Horizon Hotel</div>
+                        <div style="font-size: 25px;padding-left: 10px;padding-bottom: 10px;">new Zealand,Australia</div>
+                        <div style="font-size: 17px;padding-left: 10px;">⭐️⭐️⭐️⭐️⭐️(718 Visitors)</div>
+                    </div>
+                </div>
+                <div class="row8">
+                    <div class="row8col1">
+                        <div class="headertextrow8">Page</div>
+                        <div class="choisetextrow8">Home</div>
+                        <div class="choisetextrow8">Search</div>
+                        <div class="choisetextrow8">Blog</div>
+                        <div class="choisetextrow8">About us</div>
+                    </div>
+                    <div class="row8col2">
+                        <div class="headertextrow8">Features</div>
+                        <div class="choisetextrow8">Find Hotel</div>
+                        <div class="choisetextrow8">Book Hotel</div>
+                        <div class="choisetextrow8">Reviews</div>
+                    </div>
+                    <div class="row8col3">
+                        <div class="headertextrow8">Cookies</div>
+                        <div class="choisetextrow8">Terms</div>
+                        <div class="choisetextrow8">Privacy</div>
+                        <div class="choisetextrow8">Laws</div>
+                    </div>
+                    <div class="row8col4">
+                        <div class="subscription-section">
+                            <div class="left-content">
+                                <h2>Don't Wanna Miss Our Offers?</h2>
+                                <div class="subscription-form">
+                                    <input
+                                        type="email"
+                                        id="email"
+                                        name="email"
+                                        placeholder="Your email@gmail.com"
+                                    >
+                                    <button type="submit">Subscribe</button>
+                                </div>
+                            </div>
+                            <div class="right-content">
+                                <p>You guys better subscribe to our daily newsletter!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

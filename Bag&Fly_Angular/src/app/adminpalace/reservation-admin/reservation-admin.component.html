@@ -1,0 +1,143 @@
+<div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Reservation CRUD</h3>
+            <div class="card-tools">
+              <button type="button" class="btn btn-primary" (click)="toggleAddReservationModal()">Add Reservation</button>
+            </div>
+          </div>
+          <div class="card-body">
+            <table id="reservationTable" class="table table-bordered table-hover">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Check-in</th>
+                  <th>Check-out</th>
+                  <th>Total Price</th>
+                  <th>Number of Persons</th>
+                  <th>Client ID</th>
+                  <th>Hotel ID</th>
+                  <th>Status</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let reservation of reservations">
+                  <td>{{reservation.id}}</td>
+                  <td>{{reservation.checkin}}</td>
+                  <td>{{reservation.checkout}}</td>
+                  <td>{{reservation.PrixTotal}}</td>
+                  <td>{{reservation.nbPerson}}</td>
+                  <td>{{reservation.client_id}}</td>
+                  <td>{{reservation.hotel_id}}</td>
+                  <td>{{reservation.etat}}</td>
+                  <td>
+                    <button type="button" class="btn btn-warning btn-sm" (click)="toggleEditReservationModal(reservation)">Edit</button>
+                    <button type="button" class="btn btn-danger btn-sm" (click)="deleteReservation(reservation.id)">Delete</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div *ngIf="addVerif==1" class="popup">
+    <div class="popup-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Add Reservation</h5>
+        <button type="button" class="close" (click)="addVerif=0">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="checkin">Check-in</label>
+            <input type="date" class="form-control" id="checkin" placeholder="Enter check-in date" name="checkin" [(ngModel)]="newReservation!.checkin">
+          </div>
+          <div class="form-group">
+            <label for="checkout">Check-out</label>
+            <input type="date" class="form-control" id="checkout" placeholder="Enter check-out date" name="checkout" [(ngModel)]="newReservation!.checkout">
+          </div>
+          <div class="form-group">
+            <label for="totalPrice">Total Price</label>
+            <input type="number" class="form-control" id="totalPrice" placeholder="Enter total price" name="totalPrice" [(ngModel)]="newReservation!.PrixTotal">
+          </div>
+          <div class="form-group">
+            <label for="numPersons">Number of Persons</label>
+            <input type="number" class="form-control" id="numPersons" placeholder="Enter number of persons" name="numPersons" [(ngModel)]="newReservation!.nbPerson">
+          </div>
+          <div class="form-group">
+            <label for="clientId">Client ID</label>
+            <input type="number" class="form-control" id="clientId" placeholder="Enter client ID" name="clientId" [(ngModel)]="newReservation!.client_id">
+          </div>
+          <div class="form-group">
+            <label for="hotelId">Hotel ID</label>
+            <input type="number" class="form-control" id="hotelId" placeholder="Enter hotel ID" name="hotelId" [(ngModel)]="newReservation!.hotel_id">
+          </div>
+          <div class="form-group">
+            <label for="status">Status</label>
+            <input type="text" class="form-control" id="status" placeholder="Enter status" name="status" [(ngModel)]="newReservation!.etat">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="addVerif=0">Close</button>
+        <button type="button" class="btn btn-primary" (click)="addReservation()">Save changes</button>
+      </div>
+    </div>
+  </div>
+  
+  <div *ngIf="addVerif==2" class="popup">
+    <div class="popup-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Edit Reservation</h5>
+        <button type="button" class="close" (click)="addVerif=0">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="formEdit">
+          <input type="hidden" formControlName="id">
+          <div class="form-group">
+            <label for="editCheckin">Check-in</label>
+            <input type="date" class="form-control" id="editCheckin" placeholder="Enter check-in date" formControlName="editReservationCheckin">
+          </div>
+          <div class="form-group">
+            <label for="editCheckout">Check-out</label>
+            <input type="date" class="form-control" id="editCheckout" placeholder="Enter check-out date" formControlName="editReservationCheckout">
+          </div>
+          <div class="form-group">
+            <label for="editTotalPrice">Total Price</label>
+            <input type="number" class="form-control" id="editTotalPrice" placeholder="Enter total price" formControlName="editReservationPrixTotal">
+          </div>
+          <div class="form-group">
+            <label for="editNumPersons">Number of Persons</label>
+            <input type="number" class="form-control" id="editNumPersons" placeholder="Enter number of persons" formControlName="editReservationNbPerson">
+          </div>
+          <div class="form-group">
+            <label for="editClientId">Client ID</label>
+            <input type="number" class="form-control" id="editClientId" placeholder="Enter client ID" formControlName="editReservationClientId">
+          </div>
+          <div class="form-group">
+            <label for="editHotelId">Hotel ID</label>
+            <input type="number" class="form-control" id="editHotelId" placeholder="Enter hotel ID" formControlName="editReservationHotelId">
+          </div>
+          <div class="form-group">
+            <label for="editStatus">Status</label>
+            <input type="text" class="form-control" id="editStatus" placeholder="Enter status" formControlName="editReservationEtat">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="addVerif=0">Close</button>
+        <button type="button" class="btn btn-primary" (click)="editReservation()">Save changes</button>
+      </div>
+    </div>
+  </div>
+  

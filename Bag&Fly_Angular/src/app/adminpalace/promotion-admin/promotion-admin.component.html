@@ -1,0 +1,113 @@
+<div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Promotion CRUD</h3>
+            <div class="card-tools">
+              <button type="button" class="btn btn-primary" (click)="toggleAddPromotionModal()">Add Promotion</button>
+            </div>
+          </div>
+          <div class="card-body">
+            <table id="promotionTable" class="table table-bordered table-hover">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Start Date</th>
+                  <th>End Date</th>
+                  <th>Percentage</th>
+                  <th>Hotel ID</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let promotion of promotions">
+                  <td>{{promotion.id}}</td>
+                  <td>{{promotion.dateDebut}}</td>
+                  <td>{{promotion.dateFin}}</td>
+                  <td>{{promotion.pourcentage}}</td>
+                  <td>{{promotion.hotel_id}}</td>
+                  <td>
+                    <button type="button" class="btn btn-warning btn-sm" (click)="toggleEditPromotionModal(promotion)">Edit</button>
+                    <button type="button" class="btn btn-danger btn-sm" (click)="deletePromotion(promotion.id)">Delete</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div *ngIf="addVerif==1" class="popup">
+    <div class="popup-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Add Promotion</h5>
+        <button type="button" class="close" (click)="addVerif=0">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="startDate">Start Date</label>
+            <input type="date" class="form-control" id="startDate" placeholder="Enter start date" name="startDate" [(ngModel)]="newPromotion!.dateDebut">
+          </div>
+          <div class="form-group">
+            <label for="endDate">End Date</label>
+            <input type="date" class="form-control" id="endDate" placeholder="Enter end date" name="endDate" [(ngModel)]="newPromotion!.dateFin">
+          </div>
+          <div class="form-group">
+            <label for="percentage">Percentage</label>
+            <input type="number" class="form-control" id="percentage" placeholder="Enter percentage" name="percentage" [(ngModel)]="newPromotion!.pourcentage">
+          </div>
+          <div class="form-group">
+            <label for="hotelId">Hotel ID</label>
+            <input type="number" class="form-control" id="hotelId" placeholder="Enter hotel ID" name="hotelId" [(ngModel)]="newPromotion!.hotel_id">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="addVerif=0">Close</button>
+        <button type="button" class="btn btn-primary" (click)="addPromotion()">Save changes</button>
+      </div>
+    </div>
+  </div>
+  
+  <div *ngIf="addVerif==2" class="popup">
+    <div class="popup-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Edit Promotion</h5>
+        <button type="button" class="close" (click)="addVerif=0">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="formEdit">
+          <input type="hidden" formControlName="id">
+          <div class="form-group">
+            <label for="editStartDate">Start Date</label>
+            <input type="date" class="form-control" id="editStartDate" placeholder="Enter start date" formControlName="editPromotionStartDate">
+          </div>
+          <div class="form-group">
+            <label for="editEndDate">End Date</label>
+            <input type="date" class="form-control" id="editEndDate" placeholder="Enter end date" formControlName="editPromotionEndDate">
+          </div>
+          <div class="form-group">
+            <label for="editPercentage">Percentage</label>
+            <input type="number" class="form-control" id="editPercentage" placeholder="Enter percentage" formControlName="editPromotionPourcentage">
+          </div>
+          <div class="form-group">
+            <label for="editHotelId">Hotel ID</label>
+            <input type="number" class="form-control" id="editHotelId" placeholder="Enter hotel ID" formControlName="editPromotionHotelId">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="addVerif=0">Close</button>
+        <button type="button" class="btn btn-primary" (click)="editPromotion()">Save changes</button>
+      </div>
+    </div>
+  </div>
+  

@@ -1,0 +1,111 @@
+<div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Compte CRUD</h3>
+            <div class="card-tools">
+              <button type="button" class="btn btn-primary" (click)="toggleAddCompteModal()">Add Compte</button>
+            </div>
+          </div>
+          <div class="card-body">
+            <table id="compteTable" class="table table-bordered table-hover">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Email</th>
+                  <th>Password</th>
+                  <th>Administrator ID</th>
+                  <th>Client ID</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let compte of comptes">
+                  <td>{{compte.id}}</td>
+                  <td>{{compte.Email}}</td>
+                  <td>{{compte.Password}}</td>
+                  <td>{{compte.administrator_id}}</td>
+                  <td>{{compte.client_id}}</td>
+                  <td>
+                    <button type="button" class="btn btn-warning btn-sm" (click)="toggleEditCompteModal(compte)">Edit</button>
+                    <button type="button" class="btn btn-danger btn-sm" (click)="deleteCompte(compte.id)">Delete</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div *ngIf="addVerif==1" class="popup">
+    <div class="popup-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Add Compte</h5>
+        <button type="button" class="close" (click)="addVerif=0">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="compteEmail">Email</label>
+            <input type="email" class="form-control" id="compteEmail" placeholder="Enter email" name="compteEmail" [(ngModel)]="newCompte!.Email">
+          </div>
+          <div class="form-group">
+            <label for="comptePassword">Password</label>
+            <input type="password" class="form-control" id="comptePassword" placeholder="Enter password" name="comptePassword" [(ngModel)]="newCompte!.Password">
+          </div>
+          <div class="form-group">
+            <label for="compteAdministratorId">Administrator ID</label>
+            <input type="number" class="form-control" id="compteAdministratorId" placeholder="Enter administrator ID" name="compteAdministratorId" [(ngModel)]="newCompte!.administrator_id">
+          </div>
+          <div class="form-group">
+            <label for="compteClientId">Client ID</label>
+            <input type="number" class="form-control" id="compteClientId" placeholder="Enter client ID" name="compteClientId" [(ngModel)]="newCompte!.client_id">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="addVerif=0">Close</button>
+        <button type="button" class="btn btn-primary" (click)="addCompte()">Save changes</button>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="addVerif==2" class="popup">
+    <div class="popup-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Edit Compte</h5>
+        <button type="button" class="close" (click)="addVerif=0">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="formEdit">
+          <input type="hidden" formControlName="id">
+          <div class="form-group">
+            <label for="editCompteEmail">Email</label>
+            <input type="email" class="form-control" id="editCompteEmail" placeholder="Enter email" formControlName="editCompteEmail">
+          </div>
+          <div class="form-group">
+            <label for="editComptePassword">Password</label>
+            <input type="password" class="form-control" id="editComptePassword" placeholder="Enter password" formControlName="editComptePassword">
+          </div>
+          <div class="form-group">
+            <label for="editCompteAdministratorId">Administrator ID</label>
+            <input type="number" class="form-control" id="editCompteAdministratorId" placeholder="Enter administrator ID" formControlName="editCompteAdministratorId">
+          </div>
+          <div class="form-group">
+            <label for="editCompteClientId">Client ID</label>
+            <input type="number" class="form-control" id="editCompteClientId" placeholder="Enter client ID" formControlName="editCompteClientId">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="addVerif=0">Close</button>
+        <button type="button" class="btn btn-primary" (click)="editCompte()">Save changes</button>
+      </div>
+    </div>
+  </div>

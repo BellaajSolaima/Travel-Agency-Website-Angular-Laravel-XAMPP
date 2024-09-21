@@ -1,0 +1,19 @@
+# Laravel
+/Bag&Fly_Laravel/vendor
+/Bag&Fly_Laravel/node_modules
+/Bag&Fly_Laravel/public/storage
+/Bag&Fly_Laravel/storage/*.key
+/Bag&Fly_Laravel/.env
+/Bag&Fly_Laravel/composer.lock
+/Bag&Fly_Laravel/storage/logs
+/Bag&Fly_Laravel/storage/framework
+/Bag&Fly_Laravel/bootstrap/cache
+
+# Angular
+/Bag&Fly_Angular/node_modules
+/Bag&Fly_Angular/dist
+/Bag&Fly_Angular/.angular
+/Bag&Fly_Angular/.env
+
+# Common
+.DS_Store

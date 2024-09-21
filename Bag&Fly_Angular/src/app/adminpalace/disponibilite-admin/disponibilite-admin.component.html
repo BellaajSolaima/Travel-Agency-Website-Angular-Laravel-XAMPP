@@ -1,0 +1,193 @@
+<div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Disponibilite CRUD</h3>
+            <div class="card-tools">
+              <button type="button" class="btn btn-primary" (click)="toggleAddDisponibiliteModal()">Add Disponibilite</button>
+            </div>
+          </div>
+          <div class="card-body">
+            <table id="disponibiliteTable" class="table table-bordered table-hover">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Start Date</th>
+                  <th>End Date</th>
+                  <th>Number of Rooms (Type 2)</th>
+                  <th>Remaining Rooms (Type 2)</th>
+                  <th>Price per Room (Type 2)</th>
+                  <th>Number of Rooms (Type 3)</th>
+                  <th>Remaining Rooms (Type 3)</th>
+                  <th>Price per Room (Type 3)</th>
+                  <th>Number of Rooms (Type 4)</th>
+                  <th>Remaining Rooms (Type 4)</th>
+                  <th>Price per Room (Type 4)</th>
+                  <th>Hotel ID</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let disponibilite of disponibilites">
+                  <td>{{ disponibilite.id }}</td>
+                  <td>{{ disponibilite.dateDebut }}</td>
+                  <td>{{ disponibilite.dateFin }}</td>
+                  <td>{{ disponibilite.nbChambre2 }}</td>
+                  <td>{{ disponibilite.nbChambreRestantes2 }}</td>
+                  <td>{{ disponibilite.prixChambre2 }}</td>
+                  <td>{{ disponibilite.nbChambre3 }}</td>
+                  <td>{{ disponibilite.nbChambreRestantes3 }}</td>
+                  <td>{{ disponibilite.prixChambre3 }}</td>
+                  <td>{{ disponibilite.nbChambre4 }}</td>
+                  <td>{{ disponibilite.nbChambreRestantes4 }}</td>
+                  <td>{{ disponibilite.prixChambre4 }}</td>
+                  <td>{{ disponibilite.hotel_id }}</td>
+                  <td>
+                    <button type="button" class="btn btn-warning btn-sm" (click)="toggleEditDisponibiliteModal(disponibilite)">Edit</button>
+                    <button type="button" class="btn btn-danger btn-sm" (click)="deleteDisponibilite(disponibilite.id)">Delete</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div *ngIf="addVerif==1" class="popup">
+    <div class="popup-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Add Disponibilite</h5>
+        <button type="button" class="close" (click)="addVerif=0">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="disponibiliteStartDate">Start Date</label>
+            <input type="date" class="form-control" id="disponibiliteStartDate" placeholder="Enter start date" name="disponibiliteStartDate" [(ngModel)]="newDisponibilite.dateDebut">
+          </div>
+          <div class="form-group">
+            <label for="disponibiliteEndDate">End Date</label>
+            <input type="date" class="form-control" id="disponibiliteEndDate" placeholder="Enter end date" name="disponibiliteEndDate" [(ngModel)]="newDisponibilite.dateFin">
+          </div>
+          <div class="form-group">
+            <label for="disponibiliteNbChambre2">Number of Rooms (Type 2)</label>
+            <input type="number" class="form-control" id="disponibiliteNbChambre2" placeholder="Enter number of rooms (Type 2)" name="disponibiliteNbChambre2" [(ngModel)]="newDisponibilite.nbChambre2">
+          </div>
+          <div class="form-group">
+            <label for="disponibiliteNbChambreRestantes2">Remaining Rooms (Type 2)</label>
+            <input type="number" class="form-control" id="disponibiliteNbChambreRestantes2" placeholder="Enter remaining rooms (Type 2)" name="disponibiliteNbChambreRestantes2" [(ngModel)]="newDisponibilite.nbChambreRestantes2">
+          </div>
+          <div class="form-group">
+            <label for="disponibilitePrixChambre2">Price per Room (Type 2)</label>
+            <input type="number" class="form-control" id="disponibilitePrixChambre2" placeholder="Enter price per room (Type 2)" name="disponibilitePrixChambre2" [(ngModel)]="newDisponibilite.prixChambre2">
+          </div>
+          <div class="form-group">
+            <label for="disponibiliteNbChambre3">Number of Rooms (Type 3)</label>
+            <input type="number" class="form-control" id="disponibiliteNbChambre3" placeholder="Enter number of rooms (Type 3)" name="disponibiliteNbChambre3" [(ngModel)]="newDisponibilite.nbChambre3">
+          </div>
+          <div class="form-group">
+            <label for="disponibiliteNbChambreRestantes3">Remaining Rooms (Type 3)</label>
+            <input type="number" class="form-control" id="disponibiliteNbChambreRestantes3" placeholder="Enter remaining rooms (Type 3)" name="disponibiliteNbChambreRestantes3" [(ngModel)]="newDisponibilite.nbChambreRestantes3">
+          </div>
+          <div class="form-group">
+            <label for="disponibilitePrixChambre3">Price per Room (Type 3)</label>
+            <input type="number" class="form-control" id="disponibilitePrixChambre3" placeholder="Enter price per room (Type 3)" name="disponibilitePrixChambre3" [(ngModel)]="newDisponibilite.prixChambre3">
+          </div>
+          <div class="form-group">
+            <label for="disponibiliteNbChambre4">Number of Rooms (Type 4)</label>
+            <input type="number" class="form-control" id="disponibiliteNbChambre4" placeholder="Enter number of rooms (Type 4)" name="disponibiliteNbChambre4" [(ngModel)]="newDisponibilite.nbChambre4">
+          </div>
+          <div class="form-group">
+            <label for="disponibiliteNbChambreRestantes4">Remaining Rooms (Type 4)</label>
+            <input type="number" class="form-control" id="disponibiliteNbChambreRestantes4" placeholder="Enter remaining rooms (Type 4)" name="disponibiliteNbChambreRestantes4" [(ngModel)]="newDisponibilite.nbChambreRestantes4">
+          </div>
+          <div class="form-group">
+            <label for="disponibilitePrixChambre4">Price per Room (Type 4)</label>
+            <input type="number" class="form-control" id="disponibilitePrixChambre4" placeholder="Enter price per room (Type 4)" name="disponibilitePrixChambre4" [(ngModel)]="newDisponibilite.prixChambre4">
+          </div>
+          <div class="form-group">
+            <label for="disponibiliteHotelId">Hotel ID</label>
+            <input type="number" class="form-control" id="disponibiliteHotelId" placeholder="Enter hotel ID" name="disponibiliteHotelId" [(ngModel)]="newDisponibilite.hotel_id">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="addVerif=0">Close</button>
+        <button type="button" class="btn btn-primary" (click)="addDisponibilite()">Save changes</button>
+      </div>
+    </div>
+  </div>
+  
+  <div *ngIf="addVerif==2" class="popup">
+    <div class="popup-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Edit Disponibilite</h5>
+        <button type="button" class="close" (click)="addVerif=0">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="formEdit">
+          <input type="hidden" formControlName="id">
+          <div class="form-group">
+            <label for="editDisponibiliteStartDate">Start Date</label>
+            <input type="date" class="form-control" id="editDisponibiliteStartDate" placeholder="Enter start date" formControlName="editDisponibiliteStartDate">
+          </div>
+          <div class="form-group">
+            <label for="editDisponibiliteEndDate">End Date</label>
+            <input type="date" class="form-control" id="editDisponibiliteEndDate" placeholder="Enter end date" formControlName="editDisponibiliteEndDate">
+          </div>
+          <div class="form-group">
+            <label for="editDisponibiliteNbChambre2">Number of Rooms (Type 2)</label>
+            <input type="number" class="form-control" id="editDisponibiliteNbChambre2" placeholder="Enter number of rooms (Type 2)" formControlName="editDisponibiliteNbChambre2">
+          </div>
+          <div class="form-group">
+            <label for="editDisponibiliteNbChambreRestantes2">Remaining Rooms (Type 2)</label>
+            <input type="number" class="form-control" id="editDisponibiliteNbChambreRestantes2" placeholder="Enter remaining rooms (Type 2)" formControlName="editDisponibiliteNbChambreRestantes2">
+          </div>
+          <div class="form-group">
+            <label for="editDisponibilitePrixChambre2">Price per Room (Type 2)</label>
+            <input type="number" class="form-control" id="editDisponibilitePrixChambre2" placeholder="Enter price per room (Type 2)" formControlName="editDisponibilitePrixChambre2">
+          </div>
+          <div class="form-group">
+            <label for="editDisponibiliteNbChambre3">Number of Rooms (Type 3)</label>
+            <input type="number" class="form-control" id="editDisponibiliteNbChambre3" placeholder="Enter number of rooms (Type 3)" formControlName="editDisponibiliteNbChambre3">
+          </div>
+          <div class="form-group">
+            <label for="editDisponibiliteNbChambreRestantes3">Remaining Rooms (Type 3)</label>
+            <input type="number" class="form-control" id="editDisponibiliteNbChambreRestantes3" placeholder="Enter remaining rooms (Type 3)" formControlName="editDisponibiliteNbChambreRestantes3">
+          </div>
+          <div class="form-group">
+            <label for="editDisponibilitePrixChambre3">Price per Room (Type 3)</label>
+            <input type="number" class="form-control" id="editDisponibilitePrixChambre3" placeholder="Enter price per room (Type 3)" formControlName="editDisponibilitePrixChambre3">
+          </div>
+          <div class="form-group">
+            <label for="editDisponibiliteNbChambre4">Number of Rooms (Type 4)</label>
+            <input type="number" class="form-control" id="editDisponibiliteNbChambre4" placeholder="Enter number of rooms (Type 4)" formControlName="editDisponibiliteNbChambre4">
+          </div>
+          <div class="form-group">
+            <label for="editDisponibiliteNbChambreRestantes4">Remaining Rooms (Type 4)</label>
+            <input type="number" class="form-control" id="editDisponibiliteNbChambreRestantes4" placeholder="Enter remaining rooms (Type 4)" formControlName="editDisponibiliteNbChambreRestantes4">
+          </div>
+          <div class="form-group">
+            <label for="editDisponibilitePrixChambre4">Price per Room (Type 4)</label>
+            <input type="number" class="form-control" id="editDisponibilitePrixChambre4" placeholder="Enter price per room (Type 4)" formControlName="editDisponibilitePrixChambre4">
+          </div>
+          <div class="form-group">
+            <label for="editDisponibiliteHotelId">Hotel ID</label>
+            <input type="number" class="form-control" id="editDisponibiliteHotelId" placeholder="Enter hotel ID" formControlName="editDisponibiliteHotelId">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="addVerif=0">Close</button>
+        <button type="button" class="btn btn-primary" (click)="editDisponibilite()">Save changes</button>
+      </div>
+    </div>
+  </div>
+  

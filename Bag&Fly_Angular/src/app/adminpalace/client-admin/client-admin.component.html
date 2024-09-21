@@ -1,0 +1,102 @@
+<div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Client CRUD</h3>
+            <div class="card-tools">
+              <button type="button" class="btn btn-primary" (click)="toggleAddClientModal()">Add Client</button>
+            </div>
+          </div>
+          <div class="card-body">
+            <table id="clientTable" class="table table-bordered table-hover">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Name</th>
+                  <th>CIN</th>
+                  <th>Phone Number</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let client of clients">
+                  <td>{{client.id}}</td>
+                  <td>{{client.nomClient}}</td>
+                  <td>{{client.cin}}</td>
+                  <td>{{client.numTel}}</td>
+                  <td>
+                    <button type="button" class="btn btn-warning btn-sm" (click)="toggleEditClientModal(client)">Edit</button>
+                    <button type="button" class="btn btn-danger btn-sm" (click)="deleteClient(client.id)">Delete</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div *ngIf="addVerif==1" class="popup">
+    <div class="popup-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Add Client</h5>
+        <button type="button" class="close" (click)="addVerif=0">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="clientName">Name</label>
+            <input type="text" class="form-control" id="clientName" placeholder="Enter client name" name="clientName" [(ngModel)]="newClient!.nomClient">
+          </div>
+          <div class="form-group">
+            <label for="clientCIN">CIN</label>
+            <input type="text" class="form-control" id="clientCIN" placeholder="Enter client CIN" name="clientCIN" [(ngModel)]="newClient!.cin">
+          </div>
+          <div class="form-group">
+            <label for="clientPhoneNumber">Phone Number</label>
+            <input type="text" class="form-control" id="clientPhoneNumber" placeholder="Enter client phone number" name="clientPhoneNumber" [(ngModel)]="newClient!.numTel">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="addVerif=0">Close</button>
+        <button type="button" class="btn btn-primary" (click)="addClient()">Save changes</button>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="addVerif==2" class="popup">
+    <div class="popup-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Edit Client</h5>
+        <button type="button" class="close" (click)="addVerif=0">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="formEdit">
+          <input type="hidden" formControlName="id">
+          <div class="form-group">
+            <label for="editClientName">Name</label>
+            <input type="text" class="form-control" id="editClientName" placeholder="Enter client name" formControlName="editClientName">
+          </div>
+          <div class="form-group">
+            <label for="editClientCIN">CIN</label>
+            <input type="text" class="form-control" id="editClientCin" placeholder="Enter client CIN" formControlName="editClientCin">
+          </div>
+          <div class="form-group">
+            <label for="editClientPhoneNumber">Phone Number</label>
+            <input type="text" class="form-control" id="editClientNumTel" placeholder="Enter client phone number" formControlName="editClientNumTel">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="addVerif=0">Close</button>
+        <button type="button" class="btn btn-primary" (click)="editClient()">Save changes</button>
+      </div>
+    </div>
+  </div>
+  

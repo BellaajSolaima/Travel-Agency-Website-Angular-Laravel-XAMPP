@@ -1,0 +1,524 @@
+body {
+    background-color: #ededed;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    overflow-x: hidden;
+}
+.container {
+    background-color: white;
+    border-radius: 30px;
+    border: 2px solid #ccc;
+    padding: 20px;
+    margin: 20px;
+    width: 95%;
+    height: 200vw;
+    overflow: hidden;
+}
+.container-photo {
+    overflow: hidden;
+    background-image: url('src/assets/photo-bedroom3_edited.jpg');
+    height: 85vh;
+    background-position: center;
+    background-size: cover;
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    padding: 20px;
+}
+.row1 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+.logo {
+    margin-right: 30px;
+}
+.overlay-textlogo {
+    position: relative;
+    top: -70px;
+    color: rgb(227, 227, 227);
+    font-size: 2.5vw;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.nav_position {
+    margin-right: 300px;
+    margin-top: -10px;
+    margin-bottom: 20px;
+}
+.nav_item {
+    font-size: 1.4em;
+    color: #ffecec;
+    text-decoration: none;
+    margin-left: 40px;
+    position: relative;
+}
+.nav_item::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 100%;
+    height: 3px;
+    background: #fff;
+    border-radius: 5px;
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+.nav_item:hover::after {
+    transform: scaleX(1);
+}
+.login_Button {
+    margin-left: 15px;
+    
+    color: #fff;
+    text-decoration: none;
+    border: 2px solid #fff;
+    font-weight: 500;
+    padding: 10px 40px;
+    border-radius: 40px;
+    transition: all 0.3s ease;
+}
+.login_Button:hover {
+    color: black !important;
+    background-color: #ffecec;
+}
+.signup_Button {
+    margin-left: 15px;
+    color: black;
+    background-color: #ffecec;
+    text-decoration: none;
+    border: 2px solid #fff;
+    font-weight: 500;
+    padding: 10px 40px;
+    border-radius: 40px;
+    transition: all 0.3s ease;
+}
+.signup_Button:hover {
+    color: #fff !important;
+    background-color: transparent;
+}
+.bigtext1 {
+    font-size: 120px;
+    padding-bottom: 110px;
+    color: lightsteelblue;
+    margin-top: 40px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    opacity: 83%;
+
+    color: #c2b280;
+ }
+ .search-container {
+padding-top: 10px;
+
+ }
+ .bigtext2 {
+    opacity: 83%;
+
+    color: #c2b280;
+    margin-top: 40px;
+
+     font-size: 140px;
+  
+     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+ }
+ .row2 {
+    display: flex;
+    justify-content: center; 
+    width: 120%;
+    height: 300px;
+    margin-left: 150px;
+}
+.counterContainer{
+    margin-left: 150px;
+    color: rgb(227, 227, 227);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.counterMediumText{
+    font-size: 50px;
+}
+.counterSmallText{
+    font-size: 20px;
+}
+.row3 {
+    position: relative;
+    bottom: -40px;
+    margin-top: 40px;
+    width: 95%;
+    height: 125px;
+    background-color: white;
+    opacity: 90%;
+    border-radius: 30px;
+    padding-bottom: 20px;
+}
+.row3 > div {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    
+}
+
+.image-and-text {
+    margin-left: -30px;
+    margin-top: -20px;
+    display: flex; 
+    align-items: center; 
+    color: rgb(52, 52, 52);
+    font-size: 25px;
+    font-weight: 700;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.reservation_input{
+    display: flex;
+    justify-content: center;
+    width: 200px;
+    margin-top: -15px;
+    height: 40px;
+    padding: 10px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: #656565; 
+    border: 0px; 
+    background-color: #efefef;
+    border-radius: 20px;
+    font-size: 16px;
+}
+.reservation_input::placeholder {
+    color: #c0c0c0; 
+    font-size: 20px;  
+    font-style: italic; 
+}
+.reservation_button{
+   margin-bottom: -5px;
+    height: 100px;
+    width: 250px;
+    background: linear-gradient(to left, black, rgb(63, 63, 63));
+    color: #fff;
+    text-decoration: none;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    border: 2px solid #fff;
+    font-weight: bold;
+    font-size: 30px;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+
+}
+.custom-dropdown {
+    position: relative;
+    display: inline-block;
+    width: 220px;
+    height: 60px;
+    margin-top: -15px;
+    border-radius: 20px;
+    background-color: #efefef;
+    font-family: inherit;
+    font-size: inherit;
+    overflow: hidden; 
+    
+}
+
+.custom-dropdown select {
+    width: 100%;
+    height: 100%;
+    border: 2px solid #fff;
+    background: none;
+    padding: 15px;
+    cursor: pointer;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 22px;  
+    color: #656565; 
+}
+
+.custom-dropdown select option {
+    color: #333;
+    font-style: normal; 
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 22px;    
+}
+
+.custom-dropdown select option[value=""] {
+    color: #c0c0c0; 
+    font-style: italic;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 22px;
+}
+.reservation_date_input{
+    display: flex;
+    justify-content: center;
+    width: 220px;
+    height: 40px;
+    padding: 10px;
+    margin-top: -15px;
+    background-color: #efefef;
+    border-radius: 20px;
+    font-size: 20px;
+    border: 1px solid #ccc;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: #656565; 
+}
+.row4{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 150px;
+    
+}
+.text11{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 50px;
+    padding: 30px;
+    color: #333;
+}
+.text12{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 50px;
+    
+    padding-bottom: 40px;
+    color: #333;
+}
+.undertext1{
+    font-size: 23px;
+    color: #696969;
+}
+.row5{
+    padding: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.row5col1{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+    margin-right: 45px;
+    
+}
+.row5col2{
+    margin-top: 25px;
+    
+    
+}
+.img1{
+    background-image: url('src/assets/best1.jpg');
+    background-position: center;
+    background-size: cover;
+    border-radius: 20px;
+    width: 800px;
+    height: 650px;
+    margin-top: 20px; 
+    display: flex;
+    flex-direction: column-reverse;
+    padding: 50px;
+}
+.img2{
+    background-image: url('src/assets/best2.jpg');
+    background-position: center;
+    background-size: cover;
+    border-radius: 20px;
+    width: 400px;
+    height: 380px; 
+    display: flex;
+    flex-direction: column-reverse;
+    padding: 25px;
+}
+.img3{
+    background-image: url('src/assets/best3.jpg');
+    background-position: center;
+    background-size: cover;
+    border-radius: 20px;
+    width: 400px;
+    height: 360px; 
+    display: flex;
+    flex-direction: column-reverse;
+    padding: 25px;
+}
+.text211{
+    color: #fff;
+    font-size: 35px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    margin-top: 55px;
+}
+.text212{
+    color: #fff;
+    font-size: 60px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.text221{
+    color: #fff;
+    font-size: 17px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    margin-top: 30px;
+}
+.text222{
+    color: #fff;
+    font-size: 30px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.row6{
+    display: flex;
+    justify-content: space-between;
+    padding: 60px;
+}
+.row6col1{
+    display: flex;
+    flex-direction: column;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 50px;
+   
+    color: #333;
+}
+.row6col2{
+    display: flex;
+    flex-direction: column;
+    font-size: 20px;
+    color: #696969;
+}
+.hotelsearchbutton{
+    margin-top: 20px;
+    margin-left: 30px;
+    width: 320px;
+    height: 40px;
+    padding: 20px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: #656565; 
+    border: 0px; 
+    background-color: #f9f9f9;
+    border-radius: 20px;
+    font-size: 21px;
+}
+.search-container {
+    position: relative;
+}
+
+.search-container input[type="text"] {
+    padding-right: 30px; /* Ensure space for the icon */
+}
+
+.search-container .fa-search {
+    position: absolute;
+    top: 57%;
+    right: 45px; /* Adjust as needed */
+    transform: translateY(-50%);
+}
+.row7{
+    display: flex;
+    justify-content: space-around;
+    padding-top: 100px;
+    padding-left: 100px;
+    padding-right: 100px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: #656565; 
+}
+.besthotelphoto{
+    width: 350px;
+    border-radius: 30px;
+}
+.row8{display: flex;
+    position: relative;
+    bottom: 0;
+    left: -20px;
+    background-color: #333;
+    height:250px;
+    width: 104%;
+    padding-top: 50px;
+    padding-left: 100px;
+    margin-top: 50px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.row8col1{
+    padding-right: 150px;
+    display: flex;
+    flex-direction: column;
+}
+.row8col2{
+    padding-right: 150px;
+    display: flex;
+    flex-direction: column;
+}
+.row8col3{
+    padding-right: 150px;
+    display: flex;
+    flex-direction: column;
+}
+.row8col4{
+    margin-right: 40px;
+}
+.headertextrow8{
+    padding-bottom: 20px;
+    color: #fff;
+    font-size: 25px;
+}
+.choisetextrow8{
+    padding-bottom: 15px;
+    color:rgb(173, 173, 173);
+    font-size: 20px;
+}
+.subscription-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    max-width: 600px;
+    
+    margin-right: 100px;
+  }
+  
+  .left-content h2 {
+    margin: 0 0 20px;
+    font-size: 24px;
+  }
+  
+  .subscription-form {
+    display: flex;
+  }
+  
+  .subscription-form input {
+    padding: 10px;
+    margin-right: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    flex: 1;
+  }
+  
+  .subscription-form button {
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .subscription-form button:hover {
+    background-color: #555;
+  }
+  
+  .right-content p {
+    margin: 0;
+    color: #666;
+    font-size: 14px;
+  }
+  
+  @media (max-width: 768px) {
+    .subscription-section {
+      flex-direction: column;
+    }
+  
+    .right-content p {
+      margin-top: 20px;
+    }
+  }
+  .left-content{
+    margin-right: 30px;
+  }
+  
