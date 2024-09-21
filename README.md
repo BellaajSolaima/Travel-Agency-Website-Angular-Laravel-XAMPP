@@ -73,8 +73,12 @@ Welcome to the **Bag&Fly** project repository! This project integrates **Angular
 
 This project is licensed under the [MIT License](LICENSE).
 
-## 🖼️ Example UI
+## 🖼️ Website UI
 
-![Bag&Fly UI](link-to-your-image-here)
+![Bag&Fly UI](Screenshots/Capture.PNG)
 
-Feel free to explore and contribute to the project!
+![Bag&Fly UI](Screenshots/Capture1.PNG)
+
+![Bag&Fly UI](Screenshots/Capture2.PNG)
+
+![Bag&Fly UI](Screenshots/Capture3.PNG)
